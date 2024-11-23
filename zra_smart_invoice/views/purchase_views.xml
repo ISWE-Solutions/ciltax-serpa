@@ -1,0 +1,191 @@
+<odoo>
+    <data>
+        <!-- Original Form View -->
+        <record id="view_purchase_data_form" model="ir.ui.view">
+            <field name="name">purchase.data.form</field>
+            <field name="model">purchase.data</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <header>
+                        <button name="confirm_invoice" type="object" string="Validate purchase"
+                                class="oe_highlight btn btn-primary"
+                                confirm="Are you sure you want to Validate the purchase?"
+                                invisible="status != 'draft'"
+                        />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="spplr_tpin" readonly="1"/>
+                            <field name="spplr_nm" readonly="1"/>
+                            <field name="spplr_bhf_id" readonly="1"/>
+                            <field name="spplr_invc_no" options="{'no_create': True, 'no_open': True}" readonly="1"/>
+                            <field name="rcpt_ty_cd" readonly="1"/>
+                            <field name="pmt_ty_cd" readonly="1"/>
+                            <field name="cfm_dt" readonly="1"/>
+                            <field name="sales_dt" readonly="1"/>
+                            <field name="stock_rls_dt" readonly="1"/>
+                            <field name="tot_item_cnt" readonly="1"/>
+                            <field name="tot_taxbl_amt" readonly="1"/>
+                            <field name="item_nm" readonly="1"/>
+                            <field name="tot_tax_amt" readonly="1"/>
+                            <field name="tot_amt" readonly="1"/>
+                            <field name="remark" required="1"/>
+                            <field name="status" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Items">
+                                <field name="item_list">
+                                    <tree editable="bottom" delete="True" create="True">
+                                        <field name="item_seq" readonly="0"/>
+                                        <field name="item_cd" readonly="0"/>
+                                        <field name="item_nm" readonly="0"/>
+                                        <field name="prc" readonly="0"/>
+                                        <field name="tot_amt" readonly="0"/>
+                                        <field name="fetched" readonly="0"/>
+                                        <field name="qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Simplified Form View -->
+        <record id="view_purchase_data_simple_form" model="ir.ui.view">
+            <field name="name">purchase.data.simple.form</field>
+            <field name="model">purchase.data</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <header>
+                        <button name="fetch_purchase_data" type="object" string="Fetch Data" class="oe_highlight"/>
+                        <button name="refresh_list" type="object" string="Refresh List"
+                                class="oe_highlight btn btn-primary"/>
+<!--                        <button name="action_fetch_data" string="Update Purchase List" type="object"-->
+<!--                                class="oe_highlight"-->
+<!--                                icon="fa-download"/>-->
+                    </header>
+
+                    <sheet>
+                        <group>
+<!--                            <field name="fetch_selection_field_2" widget="many2one" options="{'no_open': True}"-->
+<!--                                   string="Select purchase to Fetch"/>-->
+                            <field name="fetch_selection"
+                                   string="Select purchase to Fetch"/>
+                        </group>
+
+                        <div style="margin-bottom: 50px;"/>
+                        <!-- Add Chatter for log notes and messages -->
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_purchase_item_tree" model="ir.ui.view">
+            <field name="name">purchase.item.tree</field>
+            <field name="model">purchase.item</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="item_seq"/>
+                    <field name="item_cd"/>
+                    <field name="qty"/>
+                    <field name="prc"/>
+                    <field name="tot_amt"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_purchase_data_tree" model="ir.ui.view">
+            <field name="name">purchase.data.tree</field>
+            <field name="model">purchase.data</field>
+            <field name="arch" type="xml">
+                <tree create="false" decoration-success="status == 'confirmed'" decoration-danger="status == 'rejected'"
+                      decoration-warning="status == 'partial'">
+                    <field name="item_nm"/>
+                    <field name="spplr_tpin"/>
+                    <field name="spplr_nm"/>
+                    <field name="spplr_invc_no"/>
+                    <field name="tot_amt"/>
+                    <field name="sales_dt"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <record id="view_fetched_data_tree" model="ir.ui.view">-->
+<!--            <field name="name">fetched.data.tree</field>-->
+<!--            <field name="model">fetched.data</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="spplr_tpin"/>-->
+<!--                    <field name="spplr_nm"/>-->
+<!--                    <field name="spplr_bhf_id"/>-->
+<!--                    <field name="spplr_invc_no"/>-->
+<!--                    <field name="sales_dt"/>-->
+<!--                    <field name="tot_item_cnt"/>-->
+<!--                    <field name="tot_taxbl_amt"/>-->
+<!--                    <field name="tot_tax_amt"/>-->
+<!--                    <field name="tot_amt"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="view_fetched_data_form" model="ir.ui.view">-->
+<!--            <field name="name">fetched.data.form</field>-->
+<!--            <field name="model">fetched.data</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <field name="spplr_tpin"/>-->
+<!--                            <field name="spplr_nm"/>-->
+<!--                            <field name="spplr_bhf_id"/>-->
+<!--                            <field name="spplr_invc_no"/>-->
+<!--                            <field name="sales_dt"/>-->
+<!--                            <field name="tot_item_cnt"/>-->
+<!--                            <field name="tot_taxbl_amt"/>-->
+<!--                            <field name="tot_tax_amt"/>-->
+<!--                            <field name="tot_amt"/>-->
+<!--                            <field name="remark"/>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <!-- Action for Original Form View -->
+        <record id="action_purchase_data" model="ir.actions.act_window">
+            <field name="name">Purchase Data</field>
+            <field name="res_model">purchase.data</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_purchase_data_tree"/>
+        </record>
+
+        <!-- Action for Simplified Form View -->
+        <record id="action_purchase_data_simple" model="ir.actions.act_window">
+            <field name="name">Purchase Data Simple</field>
+            <field name="res_model">purchase.data</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_purchase_data_simple_form"/>
+        </record>
+
+        <record id="action_purchase_data_tree" model="ir.actions.act_window">
+            <field name="name">Purchase Data</field>
+            <field name="res_model">purchase.data</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_purchase_data_tree"/>
+        </record>
+
+<!--        <record id="action_fetched_data" model="ir.actions.act_window">-->
+<!--            <field name="name">Fetched Data</field>-->
+<!--            <field name="res_model">fetched.data</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--        </record>-->
+
+
+    </data>
+</odoo>

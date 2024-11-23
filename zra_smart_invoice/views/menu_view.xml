@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem name="ZRA Smart Invoice" id="menu_root_zra_smart_invoice"
+              web_icon="zra_smart_invoice,static/description/logo.png"/>
+    <!-- Root Menu for ZRA Smart Invoice -->
+    <!--    <menuitem id="si_config" name="Smart invoice configurations" parent="menu_root_zra_smart_invoice"/>-->
+    <!--    <menuitem id="si_url" name="VSDC Endpoint address" parent="si_config"-->
+    <!--              action="action_view_form_config_smart_invoice"/>-->
+
+    <!-- ZRA Purchase under ZRA Smart Invoice App -->
+    <menuitem id="menu_zra_purchase_root" name="ZRA SI Purchase" parent="menu_root_zra_smart_invoice"/>
+    <menuitem id="menu_zra_purchase_detailed" name="View Purchase" parent="menu_zra_purchase_root"
+              action="action_purchase_data"/>
+    <menuitem id="menu_zra_purchase_simple" name="Check SI Purchase" parent="menu_zra_purchase_root"
+              action="action_purchase_data_simple"/>
+
+    <!-- ZRA Imports under ZRA Smart Invoice App -->
+    <menuitem id="menu_zra_import_root" name="ZRA SI Imports" parent="menu_root_zra_smart_invoice"/>
+    <menuitem id="menu_zra_import_simple" name="Check SI Imports" parent="menu_zra_import_root"
+              action="action_import_data_simple"/>
+    <menuitem id="menu_zra_import_detailed" name="Select Imports" parent="menu_zra_import_root"
+              action="action_import_data"/>
+
+    <!-- ZRA Purchase under Purchase App -->
+    <menuitem id="menu_purchase_zra_root" name="ZRA SI Purchase" parent="purchase.menu_purchase_root"/>
+    <menuitem id="menu_purchase_zra_detailed" name="View Purchase" parent="menu_purchase_zra_root"
+              action="action_purchase_data"/>
+    <menuitem id="menu_purchase_zra_simple" name="Check SI Purchase" parent="menu_purchase_zra_root"
+              action="action_purchase_data_simple"/>
+
+    <!-- ZRA Imports under Inventory App -->
+    <menuitem id="menu_inventory_zra_root" name="ZRA SI Imports" parent="stock.menu_stock_root"/>
+    <menuitem id="menu_inventory_zra_simple" name="Check SI Imports" parent="menu_inventory_zra_root"
+              action="action_import_data_simple"/>
+    <menuitem id="menu_inventory_zra_detailed" name="Select Imports" parent="menu_inventory_zra_root"
+              action="action_import_data"/>
+</odoo>

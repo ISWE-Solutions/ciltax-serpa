@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem id="menu_fetch_data_settings" name="Fetch Data Settings" parent="base.menu_administration" sequence="100"/>
+        <menuitem id="menu_fetch_data" name="Fetch Data" parent="menu_fetch_data_settings" sequence="10" action="action_fetch_data_settings"/>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <!-- Inherit the res.partner form view to add the new fields -->
+        <record id="view_partner_form_inherited" model="ir.ui.view">
+            <field name="name">res.partner.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <!-- Insert the new fields above the notebook -->
+                    <xpath expr="//sheet/notebook" position="before">
+                        <group>
+<!--                            <field name="lpo"/>-->
+<!--                            <field name="tax_id" options="{'no_create': True}"/>-->
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

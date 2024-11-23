@@ -1,0 +1,119 @@
+<odoo>
+    <data>
+        <!-- Original Form View -->
+        <record id="view_import_data_form" model="ir.ui.view">
+            <field name="name">import.data.form</field>
+            <field name="model">import.data</field>
+            <field name="arch" type="xml">
+                <form string="Import Data" create="False">
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,confirmed,rejected"/>
+                        <button name="action_confirm_import" type="object" string="Validate Import"
+                                class="oe_highlight btn btn-primary"
+                                confirm="Are you sure you want to Validate the import?"
+                                invisible="status != 'draft' "
+
+                        />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="task_cd" readonly="1"/>
+                            <field name="dcl_de" readonly="1"/>
+                            <field name="dcl_no" readonly="1"/>
+                            <field name="tot_wt"/>
+                            <field name="net_wt"/>
+                            <field name="agnt_nm" readonly="1"/>
+                            <field name="orgn_nat_cd"/>
+                            <field name="invc_fcur_amt" widget="monetary"/>
+                            <field name="invc_fcur_cd" readonly="1"/>
+                            <field name="invc_fcur_excrt" readonly="1"/>
+                            <field name="remark" required="1"/>
+                        </group>
+                        <group>
+                            <field name="item_list">
+                                <tree editable="bottom">
+                                    <button name="generate_item_code" type="object" string="Generate Item Code"
+                                            onclick="window.location.reload()"
+                                            class="btn btn-primary"/>
+<!--                                    <button name="values" type="object" string="Retrieve Item Code(s)"-->
+<!--                                            onclick="window.location.reload()"-->
+<!--                                            class="btn btn-primary"/>-->
+                                    <field name="item_seq" readonly="1"/>
+                                    <field name="classification"/>
+                                    <field name="item_cls_cd" readonly="1"/>
+                                    <field name="item_cd" required="1"/>
+                                    <field name="item_nm"/>
+                                    <field name="pkg_unit_cd"/>
+                                    <field name="pkg"/>
+                                    <field name="qty_unit_cd"/>
+                                    <field name="fetched_qty" readonly="1"/>
+                                    <field name="qty"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Simplified Form View -->
+        <record id="view_import_data_simple_form" model="ir.ui.view">
+            <field name="name">import.data.simple.form</field>
+            <field name="model">import.data</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="fetch_import_data" type="object" string="Fetch Data" class="oe_highlight"/>
+                        <button name="refresh_list" type="object" string="Refresh list" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="fetch_selection" options="{'no_create': True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Tree View -->
+        <record id="view_import_data_tree" model="ir.ui.view">
+            <field name="name">import.data.tree</field>
+            <field name="model">import.data</field>
+            <field name="arch" type="xml">
+                <tree create="False" decoration-success="status == 'confirmed'" decoration-danger="status == 'rejected'"
+                      decoration-warning="status == 'partial'">
+                    <field name="task_cd"/>
+                    <field name="item_nm"/>
+                    <field name="dcl_de"/>
+                    <field name="dcl_no"/>
+                    <field name="tot_wt"/>
+                    <field name="net_wt"/>
+                    <field name="invc_fcur_amt" widget="monetary"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Original Form View -->
+        <record id="action_import_data" model="ir.actions.act_window">
+            <field name="name">Import Data</field>
+            <field name="res_model">import.data</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_import_data_tree"/>
+        </record>
+
+        <!-- Action for Simplified Form View -->
+        <record id="action_import_data_simple" model="ir.actions.act_window">
+            <field name="name">Import Data Simple</field>
+            <field name="res_model">import.data</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_import_data_simple_form"/>
+        </record>
+
+        <!-- Parent Menu Item -->
+
+        <!-- Sub Menu Items -->
+    </data>
+</odoo>

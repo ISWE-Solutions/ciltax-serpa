@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+<!--        Inherit the form view of account.move to add a button for creating a debit note-->
+        <record id="account_move_form_inherit_debit_note" model="ir.ui.view">
+            <field name="name">account.move.form.inherit.debit.note</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="%(action_view_account_move_debit)d" type="action" string="Debit Note"
+                            class="btn-secondary" groups="account.group_account_invoice"
+                            context="{'default_move_ids': [active_id], 'default_move_type': 'in_refund'}"
+                            invisible="state != 'posted'"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

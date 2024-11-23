@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menu -->
+    <menuitem id="menu_root_zra_smart_invoice"
+              name="ZRA Smart Invoice"
+              web_icon="zra_smart_invoice,static/description/logo.png"
+              sequence="10"/>
+
+
+    <record id="action_zra_smart_invoice_form" model="ir.actions.act_window">
+        <field name="name">Smart Invoice Info</field>
+        <field name="res_model">zra.smart.invoice</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_zra_smart_invoice_info"
+              name="Smart Invoice Info"
+              parent="menu_root_zra_smart_invoice"
+              action="action_zra_smart_invoice_form"/>
+
+    <!-- Form View -->
+    <record id="view_zra_smart_invoice_form" model="ir.ui.view">
+        <field name="name">zra.smart.invoice.form</field>
+        <field name="model">zra.smart.invoice</field>
+        <field name="arch" type="xml">
+            <form string="ZRA Smart Invoice">
+                <header>
+                    <button name="fetch_zra_info" type="object" string="Initialize Device" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Basic Information">
+                            <field name="tpin"/>
+                            <field name="bhf_id"/>
+                            <field name="device_serial_no"/>
+                            <field name="taxpr_nm"/>
+                            <field name="bhf_nm"/>
+                            <field name="loc_desc"/>
+                            <field name="province_name"/>
+                            <field name="district_name"/>
+                            <field name="sector_name"/>
+                        </group>
+                        <group string="Manager Information">
+                            <field name="manager_name"/>
+                            <field name="manager_phone"/>
+                            <field name="manager_email"/>
+                        </group>
+                        <group string="Branch Details">
+                            <field name="hq_yn"/>
+                            <field name="sdc_id"/>
+                            <field name="mrc_no"/>
+                        </group>
+                        <group string="Invoice Information">
+                            <field name="last_purchase_invoice_no"/>
+                            <field name="last_sale_receipt_no"/>
+                            <field name="last_invoice_no"/>
+                            <field name="last_sale_invoice_no"/>
+                            <field name="last_training_invoice_no"/>
+                            <field name="last_proforma_invoice_no"/>
+                            <field name="last_copy_invoice_no"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Tree View -->
+    <record id="view_zra_smart_invoice_tree" model="ir.ui.view">
+        <field name="name">zra.smart.invoice.tree</field>
+        <field name="model">zra.smart.invoice</field>
+        <field name="arch" type="xml">
+            <tree string="ZRA Smart Invoice">
+                <field name="tpin"/>
+                <field name="bhf_id"/>
+                <field name="taxpr_nm"/>
+                <field name="bhf_nm"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

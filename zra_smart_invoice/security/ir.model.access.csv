@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.product.template,access_product_template,zra_smart_invoice.model_product_template,base.group_user,1,1,1,1
+access.account.move.reversal,Access_account_move_Reversal,zra_smart_invoice.model_account_move_reversal,base.group_user,1,1,1,1
+access.purchase.data,access_purchase_data,zra_smart_invoice.model_purchase_data,base.group_user,1,1,1,1
+access.purchase.item,access_purchase_item,zra_smart_invoice.model_purchase_item,base.group_user,1,1,1,1
+access.import.data,access_import_data,zra_smart_invoice.model_import_data,base.group_user,1,1,1,1
+access.import.item,access_import_item,zra_smart_invoice.model_import_item,base.group_user,1,1,1,1
+access.item.code.sequence,access_item_code_sequence,zra_smart_invoice.model_item_code_sequence,base.group_user,1,1,1,1
+access.zra.item.data,access_zra_item_data,zra_smart_invoice.model_zra_item_data,base.group_user,1,1,1,1
+access.quantity.unit.data,access_quantity_unit_data,zra_smart_invoice.model_quantity_unit_data,base.group_user,1,1,1,1
+access.packaging.unit.data,access_packaging_unit_data,zra_smart_invoice.model_packaging_unit_data,base.group_user,1,1,1,1
+access.country.data,access_country_data,zra_smart_invoice.model_country_data,base.group_user,1,1,1,1
+access.zra.smart.invoice,access_zra_smart_invoice,zra_smart_invoice.model_zra_smart_invoice,base.group_user,1,1,1,1

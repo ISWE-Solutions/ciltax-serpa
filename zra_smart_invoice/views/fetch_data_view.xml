@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.custom</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="ZRA" string="ZRA" name="zra_fetch_data" groups="base.group_user"
+                         icon="zra_smart_invoice,static/description/logo.png">
+                        <block title="ZRA">
+                            <setting help="ZRA fetching of classifications and class codes for smart invoice">
+                                <div class="o_setting_container">
+                                    <h2>Data Fetching</h2>
+                                    <br/>
+                                </div>
+                                <p>This action is used to fetch item classification and general codes used for ZRA smart
+                                    invoice
+                                </p>
+                                <div class="app_settings_block" data-key="custom_data_fetching">
+                                    <button name="fetch_data" string="Fetch Data" type="object" class="btn-primary"
+                                            style="width:50%;"/>
+                                </div>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

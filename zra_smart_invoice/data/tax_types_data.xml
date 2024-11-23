@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="tax_group" model="account.tax.group">
+            <field name="name">Standard Rated(16%)</field>
+        </record>
+
+        <record id="tax_group_mtv" model="account.tax.group">
+            <field name="name">MTV-16%</field>
+        </record>
+
+        <record id="tax_group_exports" model="account.tax.group">
+            <field name="name">Exports(0%)</field>
+        </record>
+
+        <record id="tax_group_tot" model="account.tax.group">
+            <field name="name">TOT</field>
+        </record>
+
+        <record id="tax_group_disbursement" model="account.tax.group">
+            <field name="name">Disbursement</field>
+        </record>
+
+        <record id="tax_group_reverse_vat" model="account.tax.group">
+            <field name="name">Reverse VAT</field>
+        </record>
+
+        <record id="tax_group_exempt" model="account.tax.group">
+            <field name="name">Exempt</field>
+        </record>
+
+        <record id="tax_group_zero_nature" model="account.tax.group">
+            <field name="name">Zero-Rated by Nature</field>
+        </record>
+
+        <record id="tax_group_lpo" model="account.tax.group">
+            <field name="name">Zero-rating LPO</field>
+        </record>
+
+        <!-- Standard Rated(16%) -->
+        <record id="tax_type_standard_rated" model="account.tax">
+            <field name="name">Standard Rated(16%)</field>
+            <field name="amount">16</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">A</field>
+            <field name="tax_group_id" ref="tax_group"/>
+            <field name="price_include">True</field>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Minimum Taxable Value (MTV-16%) -->
+        <record id="tax_type_mtv" model="account.tax">
+            <field name="name">Minimum Taxable Value (MTV-16%)</field>
+            <field name="amount">16</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">B</field>
+            <field name="tax_group_id" ref="tax_group_mtv"/>
+            <field name="price_include">True</field>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Exports(0%) -->
+        <record id="tax_type_exports" model="account.tax">
+            <field name="name">Exports(0%)</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">C1</field>
+            <field name="tax_group_id" ref="tax_group_exports"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Zero-rating LPO -->
+        <record id="tax_type_zero_rating_lpo" model="account.tax">
+            <field name="name">Zero-Rating LPO</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">C2</field>
+            <field name="tax_group_id" ref="tax_group_lpo"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Zero-rated by nature -->
+        <record id="tax_type_zero_rated_nature" model="account.tax">
+            <field name="name">Zero-Rated by Nature</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">C3</field>
+            <field name="tax_group_id" ref="tax_group_zero_nature"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Exempt -->
+        <record id="tax_type_exempt" model="account.tax">
+            <field name="name">Exempt</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">D</field>
+            <field name="tax_group_id" ref="tax_group_exempt"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Reverse VAT -->
+        <record id="tax_type_reverse_vat" model="account.tax">
+            <field name="name">Reverse VAT</field>
+            <field name="amount">16</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">RVAT</field>
+            <field name="tax_group_id" ref="tax_group_reverse_vat"/>
+            <field name="price_include">True</field>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Disbursement -->
+        <record id="tax_type_disbursement" model="account.tax">
+            <field name="name">Disbursement</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">E</field>
+            <field name="tax_group_id" ref="tax_group_disbursement"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- TOT -->
+        <record id="tax_type_tot" model="account.tax">
+            <field name="name">TOT</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="description">TOT</field>
+            <field name="tax_group_id" ref="tax_group_tot"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+
+        <!-- Standard Rated(16%) -->
+        <record id="tax_type_standard_rated_purchase" model="account.tax">
+            <field name="name">Standard Rated (16%) Purchase</field>
+            <field name="amount">16</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">A</field>
+            <field name="tax_group_id" ref="tax_group"/>
+            <field name="price_include">True</field>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Minimum Taxable Value (MTV-16%) -->
+        <record id="tax_type_mtv_purchase" model="account.tax">
+            <field name="name">Minimum Taxable Value (MTV-16%) Purchase</field>
+            <field name="amount">16</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">B</field>
+            <field name="tax_group_id" ref="tax_group_mtv"/>
+            <field name="price_include">True</field>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Exports(0%) -->
+        <record id="tax_type_exports_purchase" model="account.tax">
+            <field name="name">Exports(0%) Purchase</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">C1</field>
+            <field name="tax_group_id" ref="tax_group_exports"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Zero-rating LPO -->
+        <record id="tax_type_zero_rating_lpo_purchase" model="account.tax">
+            <field name="name">Zero-rating LPO Purchase</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">C2</field>
+            <field name="tax_group_id" ref="tax_group_lpo"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Zero-rated by nature -->
+        <record id="tax_type_zero_rated_nature_purchase" model="account.tax">
+            <field name="name">Zero-Rated by Nature Purchase</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">C3</field>
+            <field name="tax_group_id" ref="tax_group_zero_nature"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Exempt -->
+        <record id="tax_type_exempt_purchase" model="account.tax">
+            <field name="name">Exempt purchase</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">D</field>
+            <field name="tax_group_id" ref="tax_group_exempt"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Reverse VAT -->
+        <record id="tax_type_reverse_vat_purchase" model="account.tax">
+            <field name="name">Reverse VAT purchase</field>
+            <field name="amount">16</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">RVAT</field>
+            <field name="tax_group_id" ref="tax_group_reverse_vat"/>
+            <field name="price_include">True</field>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- Disbursement -->
+        <record id="tax_type_disbursement_purchase" model="account.tax">
+            <field name="name">Disbursement Purchase</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">E</field>
+            <field name="tax_group_id" ref="tax_group_disbursement"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+        <!-- TOT -->
+        <record id="tax_type_tot_purchase" model="account.tax">
+            <field name="name">TOT Purchase</field>
+            <field name="amount">0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="description">TOT</field>
+            <field name="tax_group_id" ref="tax_group_tot"/>
+            <field name="country_id" ref="base.zm"/>
+        </record>
+    </data>
+</odoo>

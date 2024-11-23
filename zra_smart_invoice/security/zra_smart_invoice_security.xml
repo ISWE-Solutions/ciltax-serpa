@@ -1,0 +1,15 @@
+<!--&lt;!&ndash; security/zra_smart_invoice_security.xml &ndash;&gt;-->
+<!--<odoo>-->
+<!--    <record id="access_account_payment_register_chatter" model="ir.rule">-->
+<!--        <field name="name">Access Account Payment Register Chatter</field>-->
+<!--        <field name="model_id" ref="model_account_payment_register_chatter"/>-->
+<!--        <field name="group_id" ref="base.group_user"/>-->
+<!--        <field name="perm_read" eval="1"/>-->
+<!--        <field name="perm_write" eval="1"/>-->
+<!--        <field name="perm_create" eval="1"/>-->
+<!--        <field name="perm_unlink" eval="0"/>-->
+<!--    </record>-->
+<!--</odoo>-->
+
+
+
